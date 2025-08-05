@@ -113,15 +113,27 @@ fn main() {
     env::set_current_dir(path).expect("Failed to set current directory");
     println!("Current directory set to: {}", path.display());
 
-    env::set_var("BOLOS_SDK", env::var("LEDGER_SDK_PATH").unwrap_or_else(|_| {
-        panic!("LEDGER_SDK_PATH environment variable is not set. Please set it to the path of the Ledger C SDK.");
-    }));
-
     match args.device.as_str() {
-        "nanox" => env::set_var("TARGET", "nanox"),
-        "nanosplus" => env::set_var("TARGET", "nanos2"),
-        "stax" => env::set_var("TARGET", "stax"),
-        "flex" => env::set_var("TARGET", "flex"),
+        "nanox" => {
+            env::set_var("TARGET", "nanox");
+            env::set_var("BOLOS_SDK", env::var("NANOX_SDK").unwrap());
+        }
+        "nanosplus" => {
+            env::set_var("TARGET", "nanos2");
+            env::set_var("BOLOS_SDK", env::var("NANOSP_SDK").unwrap());
+        }
+        "stax" => {
+            env::set_var("TARGET", "stax");
+            env::set_var("BOLOS_SDK", env::var("STAX_SDK").unwrap());
+        }
+        "flex" => {
+            env::set_var("TARGET", "flex");
+            env::set_var("BOLOS_SDK", env::var("FLEX_SDK").unwrap());
+        }
+        "apex_p" => {
+            env::set_var("TARGET", "apex_p");
+            env::set_var("BOLOS_SDK", env::var("APEX_P_SDK").unwrap());
+        }
         _ => panic!("Unsupported device type. Supported types are: nanox, nanosplus, stax, flex."),
     }
 
