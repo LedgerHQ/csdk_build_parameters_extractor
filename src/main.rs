@@ -111,7 +111,6 @@ fn main() {
 
     let path = Path::new(&args.app_path);
     env::set_current_dir(path).expect("Failed to set current directory");
-    println!("Current directory set to: {}", path.display());
 
     match args.device.as_str() {
         "nanox" => {
@@ -142,8 +141,6 @@ fn main() {
         .output()
         .expect("Failed to execute command");
 
-    println!("Command executed with status: {}\n", output.status);
-
     let s_out = String::from_utf8_lossy(&output.stdout);
 
     env::set_current_dir(cur_dir).expect("Failed to reset current directory");
@@ -161,8 +158,8 @@ fn main() {
                 if word.starts_with("-D"){
                     // Write the word to the file, removing the "-D" prefix
                     let v = word.trim_start_matches("-D").split('=').collect::<Vec<&str>>();
-                    let bool = FILTERED_DEFINES.iter().any(|&x| x == v[0]);
-                    if !bool {
+                    //let bool = FILTERED_DEFINES.iter().any(|&x| x == v[0]);
+                    //if !bool {
                         write!(define_file, "#define ").unwrap();
                         match v.len() {
                             1 => write!(define_file, "{}", v[0]).unwrap(),
@@ -170,19 +167,39 @@ fn main() {
                             _ => panic!("Unexpected format for define: {}", word),
                         }
                         writeln!(define_file).unwrap();
-                    }
+                    //}
                 }
                 else if word.starts_with("-I") {}
                 else if word.starts_with("-") {
-                    let bool = FILTERED_CFLAGS.iter().any(|&x| x == word);
-                    if !bool {
+                    //let bool = FILTERED_CFLAGS.iter().any(|&x| x == word);
+                    //if !bool {
                         // Write the word to the cflags file
                         writeln!(cflags_file, "{}", word).unwrap();
-                    }
+                    //}
                 }
             });
-            writeln!(cflags_file, "-Wno-unused-command-line-argument").unwrap();
+            //writeln!(cflags_file, "-Wno-unused-command-line-argument").unwrap();
             break;
         }
     }
+
+    // Compare output files with reference files
+    let ref_define_file = format!("references/c_sdk_build_{}.defines", args.device.as_str());
+    let ref_cflags_file = format!("references/c_sdk_build_{}.cflags", args.device.as_str());
+    let curr_define_file = format!("c_sdk_build_{}.defines", args.device.as_str());
+    let curr_cflags_file = format!("c_sdk_build_{}.cflags", args.device.as_str());
+
+    let curr_define_contents = std::fs::read_to_string(&curr_define_file).expect("Failed to read current defines file");
+    let curr_cflags_contents = std::fs::read_to_string(&curr_cflags_file).expect("Failed to read current cflags file");
+    let ref_define_contents = std::fs::read_to_string(&ref_define_file).expect("Failed to read reference defines file");
+    let ref_cflags_contents = std::fs::read_to_string(&ref_cflags_file).expect("Failed to read reference cflags file");
+
+    if curr_define_contents != ref_define_contents {
+        eprintln!("Current defines file does not match reference for target {}", args.device.as_str());
+    }
+
+    if curr_cflags_contents != ref_cflags_contents {
+        eprintln!("Current cflags file does not match reference for target {}", args.device.as_str());
+    }
+
 }

@@ -1,1 +1,11 @@
 /target
+c_sdk_build_apex_p.cflags
+c_sdk_build_apex_p.defines
+c_sdk_build_flex.cflags
+c_sdk_build_flex.defines
+c_sdk_build_nanosplus.cflags
+c_sdk_build_nanosplus.defines
+c_sdk_build_nanox.cflags
+c_sdk_build_nanox.defines
+c_sdk_build_stax.cflags
+c_sdk_build_stax.defines
