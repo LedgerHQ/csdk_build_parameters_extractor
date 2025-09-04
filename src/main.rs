@@ -15,7 +15,7 @@ struct Args {
     device: String,
 }
 
-const FILTERED_DEFINES: [&str; 3] = [
+const FILTERED_DEFINES: [&str; 4] = [
     // "APPNAME",
     // "HAVE_SWAP",
     // "PRINTF\\(...\\)",
@@ -82,7 +82,7 @@ const FILTERED_DEFINES: [&str; 3] = [
     // "HAVE_AES_GCM",
     // "HAVE_CMAC",
     // "HAVE_AES_SIV",
-    // "APP_INSTALL_PARAMS_DATA",
+    "APP_INSTALL_PARAMS_DATA",
 ];
 
 const _FILTERED_CFLAGS: [&str; 17] = [
