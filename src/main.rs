@@ -15,77 +15,77 @@ struct Args {
     device: String,
 }
 
-const FILTERED_DEFINES: [&str; 67] = [
-    "APPNAME",
-    "HAVE_SWAP",
-    "PRINTF\\(...\\)",
-    "MAJOR_VERSION",
-    "MINOR_VERSION",
-    "PATCH_VERSION",
-    "API_LEVEL",
-    "TARGET",
-    "TARGET_NAME",
+const FILTERED_DEFINES: [&str; 3] = [
+    // "APPNAME",
+    // "HAVE_SWAP",
+    // "PRINTF\\(...\\)",
+    // "MAJOR_VERSION",
+    // "MINOR_VERSION",
+    // "PATCH_VERSION",
+    // "API_LEVEL",
+    // "TARGET",
+    // "TARGET_NAME",
     "APPVERSION",
-    "SDK_NAME",
+    // "SDK_NAME",
     "SDK_VERSION",
     "SDK_HASH",
-    "HAVE_NES_CRYPT",
-    "HAVE_ST_AES",
-    "NATIVE_LITTLE_ENDIAN",
-    "HAVE_CRC",
-    "HAVE_HASH",
-    "HAVE_RIPEMD160",
-    "HAVE_SHA224",
-    "HAVE_SHA256",
-    "HAVE_SHA3",
-    "HAVE_SHA384",
-    "HAVE_SHA512",
-    "HAVE_SHA512_WITH_BLOCK_ALT_METHOD",
-    "HAVE_SHA512_WITH_BLOCK_ALT_METHOD_M0",
-    "HAVE_BLAKE2",
-    "HAVE_HMAC",
-    "HAVE_PBKDF2",
-    "HAVE_AES",
-    "HAVE_MATH",
-    "HAVE_RNG",
-    "HAVE_RNG_RFC6979",
-    "HAVE_RNG_SP800_90A",
-    "HAVE_ECC",
-    "HAVE_ECC_WEIERSTRASS",
-    "HAVE_ECC_TWISTED_EDWARDS",
-    "HAVE_ECC_MONTGOMERY",
-    "HAVE_SECP256K1_CURVE",
-    "HAVE_SECP256R1_CURVE",
-    "HAVE_SECP384R1_CURVE",
-    "HAVE_SECP521R1_CURVE",
-    "HAVE_FR256V1_CURVE",
-    "HAVE_STARK256_CURVE",
-    "HAVE_BRAINPOOL_P256R1_CURVE",
-    "HAVE_BRAINPOOL_P256T1_CURVE",
-    "HAVE_BRAINPOOL_P320R1_CURVE",
-    "HAVE_BRAINPOOL_P320T1_CURVE",
-    "HAVE_BRAINPOOL_P384R1_CURVE",
-    "HAVE_BRAINPOOL_P384T1_CURVE",
-    "HAVE_BRAINPOOL_P512R1_CURVE",
-    "HAVE_BRAINPOOL_P512T1_CURVE",
-    "HAVE_BLS12_381_G1_CURVE",
-    "HAVE_CV25519_CURVE",
-    "HAVE_CV448_CURVE",
-    "HAVE_ED25519_CURVE",
-    "HAVE_ED448_CURVE",
-    "HAVE_ECDH",
-    "HAVE_ECDSA",
-    "HAVE_EDDSA",
-    "HAVE_ECSCHNORR",
-    "HAVE_X25519",
-    "HAVE_X448",
-    "HAVE_AES_GCM",
-    "HAVE_CMAC",
-    "HAVE_AES_SIV",
-    "APP_INSTALL_PARAMS_DATA",
+    // "HAVE_NES_CRYPT",
+    // "HAVE_ST_AES",
+    // "NATIVE_LITTLE_ENDIAN",
+    // "HAVE_CRC",
+    // "HAVE_HASH",
+    // "HAVE_RIPEMD160",
+    // "HAVE_SHA224",
+    // "HAVE_SHA256",
+    // "HAVE_SHA3",
+    // "HAVE_SHA384",
+    // "HAVE_SHA512",
+    // "HAVE_SHA512_WITH_BLOCK_ALT_METHOD",
+    // "HAVE_SHA512_WITH_BLOCK_ALT_METHOD_M0",
+    // "HAVE_BLAKE2",
+    // "HAVE_HMAC",
+    // "HAVE_PBKDF2",
+    // "HAVE_AES",
+    // "HAVE_MATH",
+    // "HAVE_RNG",
+    // "HAVE_RNG_RFC6979",
+    // "HAVE_RNG_SP800_90A",
+    // "HAVE_ECC",
+    // "HAVE_ECC_WEIERSTRASS",
+    // "HAVE_ECC_TWISTED_EDWARDS",
+    // "HAVE_ECC_MONTGOMERY",
+    // "HAVE_SECP256K1_CURVE",
+    // "HAVE_SECP256R1_CURVE",
+    // "HAVE_SECP384R1_CURVE",
+    // "HAVE_SECP521R1_CURVE",
+    // "HAVE_FR256V1_CURVE",
+    // "HAVE_STARK256_CURVE",
+    // "HAVE_BRAINPOOL_P256R1_CURVE",
+    // "HAVE_BRAINPOOL_P256T1_CURVE",
+    // "HAVE_BRAINPOOL_P320R1_CURVE",
+    // "HAVE_BRAINPOOL_P320T1_CURVE",
+    // "HAVE_BRAINPOOL_P384R1_CURVE",
+    // "HAVE_BRAINPOOL_P384T1_CURVE",
+    // "HAVE_BRAINPOOL_P512R1_CURVE",
+    // "HAVE_BRAINPOOL_P512T1_CURVE",
+    // "HAVE_BLS12_381_G1_CURVE",
+    // "HAVE_CV25519_CURVE",
+    // "HAVE_CV448_CURVE",
+    // "HAVE_ED25519_CURVE",
+    // "HAVE_ED448_CURVE",
+    // "HAVE_ECDH",
+    // "HAVE_ECDSA",
+    // "HAVE_EDDSA",
+    // "HAVE_ECSCHNORR",
+    // "HAVE_X25519",
+    // "HAVE_X448",
+    // "HAVE_AES_GCM",
+    // "HAVE_CMAC",
+    // "HAVE_AES_SIV",
+    // "APP_INSTALL_PARAMS_DATA",
 ];
 
-const FILTERED_CFLAGS: [&str; 17] = [
+const _FILTERED_CFLAGS: [&str; 17] = [
     "-c",
     "-Wall",
     "-Wextra",
@@ -158,8 +158,8 @@ fn main() {
                 if word.starts_with("-D"){
                     // Write the word to the file, removing the "-D" prefix
                     let v = word.trim_start_matches("-D").split('=').collect::<Vec<&str>>();
-                    //let bool = FILTERED_DEFINES.iter().any(|&x| x == v[0]);
-                    //if !bool {
+                    let bool = FILTERED_DEFINES.iter().any(|&x| x == v[0]);
+                    if !bool {
                         write!(define_file, "#define ").unwrap();
                         match v.len() {
                             1 => write!(define_file, "{}", v[0]).unwrap(),
@@ -167,7 +167,7 @@ fn main() {
                             _ => panic!("Unexpected format for define: {}", word),
                         }
                         writeln!(define_file).unwrap();
-                    //}
+                    }
                 }
                 else if word.starts_with("-I") {}
                 else if word.starts_with("-") {
@@ -196,10 +196,14 @@ fn main() {
 
     if curr_define_contents != ref_define_contents {
         eprintln!("Current defines file does not match reference for target {}", args.device.as_str());
+        // terminate with error
+        std::process::exit(1);
     }
 
     if curr_cflags_contents != ref_cflags_contents {
         eprintln!("Current cflags file does not match reference for target {}", args.device.as_str());
+        // terminate with error
+        std::process::exit(1);
     }
 
 }

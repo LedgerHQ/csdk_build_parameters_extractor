@@ -25,10 +25,7 @@
 #define API_LEVEL 24
 #define TARGET \"nanox\"
 #define TARGET_NAME \"TARGET_NANOX\"
-#define APPVERSION \""2.2.2"\"
 #define SDK_NAME \""ledger-secure-sdk"\"
-#define SDK_VERSION \"v24.1.0\"
-#define SDK_HASH \"0d88c879c9d4007f2836687b39553b318d2a208f\"
 #define REVAMPED_IO
 #define gcc
 #define __IO volatile
