@@ -15,13 +15,13 @@ struct Args {
     device: String,
 }
 
-const FILTERED_DEFINES: [&str; 4] = [
+const FILTERED_DEFINES: [&str; 7] = [
     // "APPNAME",
     // "HAVE_SWAP",
     // "PRINTF\\(...\\)",
-    // "MAJOR_VERSION",
-    // "MINOR_VERSION",
-    // "PATCH_VERSION",
+    "MAJOR_VERSION",
+    "MINOR_VERSION",
+    "PATCH_VERSION",
     // "API_LEVEL",
     // "TARGET",
     // "TARGET_NAME",
