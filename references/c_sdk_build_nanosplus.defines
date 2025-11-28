@@ -15,7 +15,7 @@
 #define WEBUSB_URL 
 #define OS_IO_SEPROXYHAL
 #define STANDARD_APP_SYNC_RAPDU
-#define API_LEVEL 24
+#define API_LEVEL 25
 #define TARGET \"nanos2\"
 #define TARGET_NAME \"TARGET_NANOS2\"
 #define SDK_NAME \""ledger-secure-sdk"\"

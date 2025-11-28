@@ -20,7 +20,7 @@
 #define HAVE_IO_U2F
 #define OS_IO_SEPROXYHAL
 #define STANDARD_APP_SYNC_RAPDU
-#define API_LEVEL 24
+#define API_LEVEL 25
 #define TARGET \"flex\"
 #define TARGET_NAME \"TARGET_FLEX\"
 #define SDK_NAME \""ledger-secure-sdk"\"
@@ -39,7 +39,6 @@
 #define NBGL_PAGE
 #define NBGL_USE_CASE
 #define SCREEN_SIZE_WALLET
-#define HAVE_FAST_HOLD_TO_APPROVE
 #define OS_IO_SEPH_BUFFER_SIZE 272
 #define HAVE_LEDGER_PKI
 #define HAVE_NES_CRYPT
