@@ -21,7 +21,7 @@
 #define HAVE_IO_U2F
 #define OS_IO_SEPROXYHAL
 #define STANDARD_APP_SYNC_RAPDU
-#define API_LEVEL 25
+#define API_LEVEL 26
 #define TARGET \"flex\"
 #define TARGET_NAME \"TARGET_FLEX\"
 #define SDK_NAME \""ledger-secure-sdk"\"
