@@ -10,6 +10,7 @@
 -Wextra
 -Wno-main
 -Werror=int-to-pointer-cast
+-Wno-implicit-function-declaration
 -Wno-error=int-conversion
 -Wimplicit-fallthrough
 -Wvla
@@ -25,6 +26,7 @@
 -mno-unaligned-access
 -fropi
 -fno-jump-tables
+-fstack-protector-strong
 -msoft-float
 -frwpi
 --target=arm-none-eabi
