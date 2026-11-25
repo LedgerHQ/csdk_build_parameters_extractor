@@ -16,8 +16,6 @@
 #define HAVE_USB_APDU
 #define USB_SEGMENT_SIZE 64
 #define HAVE_WEBUSB
-#define WEBUSB_URL_SIZE_B 0
-#define WEBUSB_URL 
 #define HAVE_IO_U2F
 #define OS_IO_SEPROXYHAL
 #define STANDARD_APP_SYNC_RAPDU
